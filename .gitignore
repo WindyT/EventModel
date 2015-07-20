@@ -1,11 +1,14 @@
-# Build and Release Folders
-bin/
-bin-debug/
-bin-release/
+bin/rails generate model Event title:string text:text
 
-# Other files and folders
-.settings/
+class CreateEvents < ActiveRecord::Migration
+  def change
+    create_table :events do |t|
+      t.string :title
+      t.text :text
+ 
+      t.timestamps null: false
+    end
+  end
+end
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+bin/rake db:migrate
